@@ -7,6 +7,9 @@
                     <div class="logo" title="首页"></div>
                 </el-col>
                 <el-button type="primary" class="exit" @click="goBack()">退出</el-button>
+                <Breadcrumb />
+                
+                
 
             </el-header>
             <el-container>
@@ -24,8 +27,12 @@
 
 import '../../assets/css/index.css'
 import Nav from './Navs';
+import Breadcrumb from './Breadcrumb';
 export default {
-    components: { Nav },
+    components: { 
+      Nav,
+      Breadcrumb
+    },
     name: 'WorkspaceJsonHome',
 
     data() {
@@ -45,6 +52,11 @@ export default {
 </script>
 
 <style scoped>
+#module .breadcumb{
+  position: absolute;
+  left: 230px;
+  top:5px;
+}
 #module .el-container .el-header{
     border: none;
 }

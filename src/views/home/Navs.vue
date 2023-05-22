@@ -3,13 +3,13 @@
         <el-row class="tac">
             <el-col>
                 <el-menu
-                default-active="2"
-                class="el-menu-vertical-demo">
+                default-active="/index"
+                class="el-menu-vertical-demo" router>
                     <el-menu-item index="/index">
                         <i class="el-icon-location"></i>
                         <span slot="title">首页</span>
                     </el-menu-item>
-                    <el-menu-item index="2">
+                    <el-menu-item index="/stats">
                         <i class="el-icon-menu"></i>
                         <span slot="title">数据管理</span>
                     </el-menu-item>
@@ -18,8 +18,8 @@
                         <i class="el-icon-document"></i>
                         <span>信息管理</span>
                         </template>
-                        <el-menu-item index="1-3">列表展示1</el-menu-item>
-                        <el-menu-item index="1-4-1">列表展示2</el-menu-item>
+                        <el-menu-item index="/wms/list">列表展示1</el-menu-item>
+                        <el-menu-item index="/wms/list2">列表展示2</el-menu-item>
                     </el-submenu>
                 </el-menu>
             </el-col>
@@ -28,20 +28,20 @@
 </template>
 <script>
 export default {
-name: 'WorkspaceJsonNav',
+    name: 'WorkspaceJsonNav',
 
-data() {
-    return {
+    data() {
+        return {
+            
+        };
+    },
+
+    mounted() {
         
-    };
-},
+    },
 
-mounted() {
-    
-},
-
-methods: {
-    
-},
+    methods: {
+        
+    },
 };
 </script>
