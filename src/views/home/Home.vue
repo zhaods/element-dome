@@ -8,8 +8,6 @@
                 </el-col>
                 <el-button type="primary" class="exit" @click="goBack()">退出</el-button>
                 <Breadcrumb />
-                
-                
 
             </el-header>
             <el-container>
@@ -51,7 +49,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+
+.el-breadcrumb__inner a, .el-breadcrumb__inner.is-link{
+    color: #aaa;
+}
+.el-breadcrumb__item:last-child .el-breadcrumb__inner, .el-breadcrumb__item:last-child .el-breadcrumb__inner a, .el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover, .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover{
+    color: #fff;
+}
 #module .breadcumb{
   position: absolute;
   left: 230px;

@@ -1,13 +1,13 @@
 <template>
     <div class="breadcumb">
         <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
-        <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-        <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+            <el-breadcrumb-item :to="v.path" v-for="(v,i) in list" :key="i">
+                {{v.meta.title}}
+            </el-breadcrumb-item>
         </el-breadcrumb>
     </div>
 </template>
+
 
 <script>
 export default {
@@ -15,17 +15,28 @@ export default {
 
     data() {
         return {
-            
+            list:[]
         };
     },
 
     mounted() {
-        
+    },
+
+    created(){
+        this.list=this.$route.matched;
+
     },
 
     methods: {
         
     },
+    watch:{  //监听
+        $route(to,from){
+            console.log(to);   //to $route对象
+            let matched = to.matched;
+            this.list = matched;
+        }
+    }
 };
 </script>
 

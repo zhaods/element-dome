@@ -2,40 +2,53 @@
     <el-aside class="aside"  width="200px">
         <el-row class="tac">
             <el-col>
+                <!-- exact 精确匹配路由 -->
                 <el-menu
-                default-active="/index"
+                :default-active="$route.path" exact
                 class="el-menu-vertical-demo" router>
-                    <el-menu-item index="/index">
-                        <i class="el-icon-location"></i>
-                        <span slot="title">首页</span>
-                    </el-menu-item>
-                    <el-menu-item index="/stats">
-                        <i class="el-icon-menu"></i>
-                        <span slot="title">数据管理</span>
-                    </el-menu-item>
-                    <el-submenu index="3">
-                        <template slot="title">
-                        <i class="el-icon-document"></i>
-                        <span>信息管理</span>
-                        </template>
-                        <el-menu-item index="/wms/list">列表展示1</el-menu-item>
-                        <el-menu-item index="/wms/list2">列表展示2</el-menu-item>
-                    </el-submenu>
+                    <NavsItem v-for="v in items" :key="v.url" :mingzi="v" :basePath="v.url" :elicon="v.elicon"  />
                 </el-menu>
             </el-col>
         </el-row>
     </el-aside>
 </template>
 <script>
+import NavsItem from "./NavsItem";
 export default {
     name: 'WorkspaceJsonNav',
-
+    components: { 
+        NavsItem
+    },
     data() {
         return {
-            
+            items:[
+                {
+                    "name":'首页',
+                    "url":'/index',
+                    "elicon":'el-icon-location'
+                },{
+                    "name":'数据管理',
+                    "url":'/stats',
+                    "elicon":'el-icon-menu'
+                },{
+                    "name":'信息管理',
+                    "url":'/wms',
+                    "elicon":'el-icon-document',
+                    child:[
+                        {
+                            "name":'列表展示1',
+                            "url":'/wms/list',
+                            "elicon":'el-icon-s-order'
+                        },{
+                            "name":'列表展示2',
+                            "url":'/wms/list2',
+                            "elicon":'el-icon-s-fold'
+                        }
+                    ]
+                }
+            ]
         };
     },
-
     mounted() {
         
     },
