@@ -32,7 +32,7 @@ export default {
     },
     watch:{  //监听
         $route(to,from){
-            console.log(to);   //to $route对象
+            //console.log(to);   //to $route对象
             let matched = to.matched;
             this.list = matched;
         }
