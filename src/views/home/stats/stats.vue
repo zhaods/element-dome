@@ -1,5 +1,8 @@
 <template>
-    <div ref="chart" style="width: 600px;height:400px;"></div>
+    <div>
+        <h1>折线图区域高亮</h1>
+        <div ref="chart" style="width: 100%;height:400px;"></div>
+    </div>
 </template>
 
 <script>
@@ -13,6 +16,7 @@ export default {
             
         };
     },
+    
 
     mounted() {
         this.init();
@@ -25,25 +29,61 @@ export default {
 
             // 指定图表的配置项和数据
             var option = {
-            title: {
-                text: 'ECharts 入门示例'
-            },
-            tooltip: {},
-            legend: {
-                data: ['销量']
-            },
-            xAxis: {
-                data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-            },
-            yAxis: {},
-            series: [
-                {
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-                }
-            ]
-            };
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false
+                },
+                yAxis: {
+                    type: 'value',
+                    boundaryGap: [0, '30%']
+                },
+                visualMap: {
+                    type: 'piecewise',
+                    show: false,
+                    dimension: 0,
+                    seriesIndex: 0,
+                    pieces: [
+                    {
+                        gt: 1,
+                        lt: 3,
+                        color: 'rgba(0, 0, 180, 0.4)'
+                    },
+                    {
+                        gt: 5,
+                        lt: 7,
+                        color: 'rgba(0, 0, 180, 0.4)'
+                    }
+                    ]
+                },
+                series: [
+                    {
+                    type: 'line',
+                    smooth: 0.6,
+                    symbol: 'none',
+                    lineStyle: {
+                        color: '#5470C6',
+                        width: 5
+                    },
+                    markLine: {
+                        symbol: ['none', 'none'],
+                        label: { show: false },
+                        data: [{ xAxis: 1 }, { xAxis: 3 }, { xAxis: 5 }, { xAxis: 7 }]
+                    },
+                    areaStyle: {},
+                    data: [
+                        ['2019-10-10', 200],
+                        ['2019-10-11', 560],
+                        ['2019-10-12', 750],
+                        ['2019-10-13', 580],
+                        ['2019-10-14', 250],
+                        ['2019-10-15', 300],
+                        ['2019-10-16', 450],
+                        ['2019-10-17', 300],
+                        ['2019-10-18', 100]
+                    ]
+                    }
+                ]
+                };
 
             // 使用刚指定的配置项和数据显示图表。
             myChart.setOption(option);
